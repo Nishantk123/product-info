@@ -1,9 +1,14 @@
 import React from "react";
+import Header from "../component/Header";
 
 const Home = () =>{
     return(
         <div>
-            <h3>Welcome to my home page</h3>
+            <Header />
+            <h5 className="text-center my-3 text-primary">Welcome to my home page</h5>
+            <div>
+                
+            </div>
         </div>
     )
 }
