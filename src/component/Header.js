@@ -1,6 +1,20 @@
 import react from "react";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
+    const history = useHistory();
+
+    const handleLoginRoute = () =>{
+        history.push("/login")
+    }
+
+    const handleLogout = () =>{
+      window.localStorage.clear();
+      history.push("/")
+    }
+
+
+const token = window.localStorage.getItem("jwtToken");
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,7 +60,7 @@ const Header = () => {
               </li>
             </ul>
             <div>
-              <div class="dropdown">
+              <div className="dropdown">
                 <div
                   className="user-container"
                   id="dropdownMenuButton1"
@@ -55,20 +69,20 @@ const Header = () => {
                 >
                   {" "}
                 </div>
-                <ul class="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuButton1">
+                <ul className="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuButton1">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" onClick={handleLoginRoute} >
                         Log In
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#" >
                       Sign Up
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
+                    <a className="dropdown-item" onClick={handleLogout}>
+                      Logout
                     </a>
                   </li>
                 </ul>
