@@ -2,11 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../component/Header";
 import { useHistory } from "react-router-dom";
+import CustomModal from "../component/CustomModal";
 
 const User = () => {
   const [userList, setUserList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
   const history = useHistory();
-  
+
+  const handleModalOpen = () => {
+    setShowModal(true);
+  };
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
   useEffect(() => {
     let token = window.localStorage.getItem("jwtToken");
     console.log(token);
@@ -36,6 +45,12 @@ const User = () => {
       <Header />
       <h6 className="text-center my-5">Welcome to my User page</h6>
       <div className="container">
+        <div
+          className="d-flex justify-content-end my-3"
+          onClick={handleModalOpen}
+        >
+          <button className="btn btn-outline-info">Add new User</button>
+        </div>
         <div className="row justify-content-center">
           {userList.map((data, index) => {
             return (
@@ -53,6 +68,8 @@ const User = () => {
             );
           })}
         </div>
+        
+        {showModal ? <CustomModal handleModalClose={handleModalClose} /> : ""}
       </div>
     </div>
   );
