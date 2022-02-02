@@ -2,92 +2,80 @@ import react from "react";
 import { useHistory } from "react-router-dom";
 
 const Header = () => {
-    const history = useHistory();
+  const history = useHistory();
 
-    const handleLoginRoute = () =>{
-        history.push("/login")
-    }
+  const handleProduct = () => {
+    history.push("/product");
+  };
 
-    const handleLogout = () =>{
-      window.localStorage.clear();
-      history.push("/")
-    }
+  const handleHome = () => {
+    history.push("/");
+  };
 
+  const handleLogin = () => {
+      history.push("/login");
+  };
 
-const token = window.localStorage.getItem("jwtToken");
+  const handleRegister = () => {
+    history.push("/register");
+  };
+
+  const handleUser = () =>{
+    history.push("/user")
+  }
+
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            PunPun
-          </a>
+    <div className="text-center">
+      <nav className="navbar navbar-expand-lg navbar-light bg-primary">
+        <div className="container-fluid mx-5">
+          <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png"></img>
           <button
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div
-            className="collapse navbar-collapse justify-content-between"
-            id="navbarNavDropdown"
-          >
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a
+                  className="nav-link text-white"
+                  aria-current="page"
+                  onClick={handleHome}
+                >
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link text-white" onClick={handleProduct}>
                   Product
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Cart
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link text-white" onClick={handleUser}>
                   User
                 </a>
               </li>
+              <li className="nav-item">
+                <a className="nav-link text-white">Help</a>
+              </li>
             </ul>
-            <div>
-              <div className="dropdown">
-                <div
-                  className="user-container"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {" "}
-                </div>
-                <ul className="dropdown-menu custom-dropdown" aria-labelledby="dropdownMenuButton1">
-                  <li>
-                    <a className="dropdown-item" onClick={handleLoginRoute} >
-                        Log In
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#" >
-                      Sign Up
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" onClick={handleLogout}>
-                      Logout
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          </div>
+          <div className="d-flex justify-content-end">
+            <input
+              className="form-control"
+              type="search"
+              placeholder="Search for products, brands and more"
+              aria-label="Search"
+            ></input>
+            <button className="btn text-white mx-2" onClick={handleLogin}>Login</button>
+            <button className="btn text-white mx-2" onClick={handleRegister}>Register</button>
+
           </div>
         </div>
       </nav>
