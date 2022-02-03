@@ -1,15 +1,3 @@
-.user-container{
-  height: 50px;
-  width: 50px;
-  border-radius: 50% ;
-  background-color: aqua;
-}
-
-.custom-dropdown{
-  right: 0;
-  left: unset !important;
-}
-
 .navbar img{
   width: 90px; 
 }
@@ -25,4 +13,13 @@
 .card img{
   width: 100%;
   height: 400px;
+}
+.user-container img{
+  height: 50px;
+  width: 50px;
+}
+
+.custom-dropdown{
+  right: unset !important;
+  left: 0;
 }
